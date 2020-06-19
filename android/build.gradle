@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-  compile( 'com.facebook.react:react-native:+' )
-  compile( 'com.android.billingclient:billing:1.1' )
-  compile fileTree(dir: 'dep', include: ['*.jar'])
+  implementation 'com.facebook.react:react-native:+'
+  implementation 'com.android.billingclient:billing:1.1'
+  implementation fileTree(dir: 'dep', include: ['*.jar'])
 }
