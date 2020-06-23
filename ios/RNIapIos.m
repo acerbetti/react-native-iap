@@ -470,13 +470,7 @@ RCT_EXPORT_METHOD(buyPromotedProduct:(RCTPromiseResolveBlock)resolve
 }
 
 - (NSDictionary *)getPurchaseData:(SKPaymentTransaction *)transaction {
-  NSData *receiptData;
-  if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_7_0) {
-    receiptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
-  } else {
-    receiptData = [transaction transactionReceipt];
-  }
-  
+  NSData *receiptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];  
   if (receiptData == nil) return nil;
 
   NSMutableDictionary *purchase = [NSMutableDictionary dictionaryWithObjectsAndKeys:
