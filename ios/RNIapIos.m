@@ -727,7 +727,11 @@ RCT_EXPORT_METHOD(getPendingTransactions:(RCTPromiseResolveBlock)resolve
 
 static NSString *RCTKeyForInstance(id instance)
 {
-    return [NSString stringWithFormat:@"%p", instance];
+    if ([instance isKindOfClass:[NSString class]]) {
+        return instance;
+    } else {
+        return [NSString stringWithFormat:@"%p", instance];
+    }
 }
 
 
