@@ -383,7 +383,7 @@ RCT_EXPORT_METHOD(buyPromotedProduct:(RCTPromiseResolveBlock)resolve
 
   NSString* itemType = @"Do not use this. It returned sub only before";
 
-  if (@available(iOS 11.2, *)) {
+  if (@available(iOS 11.2, tvOS 11.2, *)) {
     // itemType = product.subscriptionPeriod ? @"sub" : @"iap";
     unsigned long numOfUnits = (unsigned long) product.subscriptionPeriod.numberOfUnits;
     SKProductPeriodUnit unit = product.subscriptionPeriod.unit;
@@ -500,7 +500,11 @@ RCT_EXPORT_METHOD(buyPromotedProduct:(RCTPromiseResolveBlock)resolve
 
 static NSString *RCTKeyForInstance(id instance)
 {
-    return [NSString stringWithFormat:@"%p", instance];
+    if ([instance isKindOfClass:[NSString class]]) {
+        return instance;
+    } else {
+        return [NSString stringWithFormat:@"%p", instance];
+    }
 }
 
 @end
